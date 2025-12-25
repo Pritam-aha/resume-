@@ -387,7 +387,21 @@ function displayResults(data) {
     return;
   }
 
-  let html = '<div class="job-matches">';
+  // Get the uploaded file name
+  const uploadedFileName = fileInput.files[0] ? fileInput.files[0].name : 'Resume';
+
+  let html = `
+    <div class="resume-info">
+      <div class="resume-header">
+        <i class="fas fa-file-pdf"></i>
+        <div class="resume-details">
+          <h4>Analyzed Resume</h4>
+          <p>${escapeHtml(uploadedFileName)}</p>
+        </div>
+      </div>
+    </div>
+    <div class="job-matches">
+  `;
   
   data.forEach((item, index) => {
     const percentage = parseFloat(item.percentage);
